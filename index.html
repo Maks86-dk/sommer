@@ -1,0 +1,1159 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Husguide – Beach House på Bøtøvej</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --sand: #F2E9D8;
+    --paper: #FDFAF3;
+    --sea: #1E6E74;
+    --sea-deep: #14494D;
+    --sea-light: #4E9CA0;
+    --driftwood: #A97C4F;
+    --rope: #C2A878;
+    --coral: #E2694B;
+    --seafoam: #7FAE9A;
+    --sky: #7FCBE0;
+    --sky-pale: #E4F6FA;
+    --ink: #2E2A22;
+    --ink-soft: #5C5344;
+    --line: rgba(46,42,34,0.14);
+  }
+
+  *{ box-sizing: border-box; margin:0; padding:0; }
+
+  html{ scroll-behavior: smooth; }
+
+  body{
+    background: var(--sand);
+    color: var(--ink);
+    font-family: "Work Sans", -apple-system, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, .display{
+    font-family: "Fraunces", Georgia, serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    color: var(--sea-deep);
+  }
+
+  a { color: var(--sea); }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position: relative;
+    padding: 4.5rem 1.5rem 6rem;
+    background:
+      radial-gradient(120% 140% at 12% 0%, rgba(255,255,255,0.4), transparent 55%),
+      linear-gradient(160deg, var(--sky) 0%, var(--sea-light) 42%, var(--sea-deep) 100%);
+    color: var(--paper);
+    overflow: hidden;
+  }
+  .hero-inner{
+    max-width: 780px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+  }
+  .eyebrow{
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    font-size: 0.72rem;
+    color: var(--rope);
+    margin-bottom: 1rem;
+    font-weight: 700;
+  }
+  .hero h1{
+    color: var(--paper);
+    font-size: clamp(2.1rem, 5vw, 3.4rem);
+    line-height: 1.08;
+    max-width: 14ch;
+    margin-bottom: 1.1rem;
+  }
+  .hero p{
+    color: #D9E1E0;
+    max-width: 46ch;
+    font-size: 1.05rem;
+  }
+  .hero-meta{
+    margin-top: 2.2rem;
+    display: flex;
+    gap: 2.2rem;
+    flex-wrap: wrap;
+    font-size: 0.92rem;
+    color: #C9D6D6;
+  }
+  .hero-meta div span{
+    display:block;
+    color: var(--sky-pale);
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 0.2rem;
+    opacity: 0.85;
+  }
+  .waves{
+    position: absolute;
+    bottom: -1px; left: 0; right: 0;
+    line-height: 0;
+    z-index: 1;
+  }
+  .waves svg{ width: 100%; height: 60px; display:block; }
+
+  /* ---------- NAV ---------- */
+  .roomnav{
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: var(--paper);
+    border-bottom: 1px solid var(--line);
+    border-top: 4px solid;
+    border-image: repeating-linear-gradient(90deg, var(--sky) 0 18px, var(--paper) 18px 36px) 4;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.7rem 1rem;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+  }
+  .roomnav .links{
+    flex: 1 1 auto;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+  .roomnav .langswitch{
+    flex: none;
+    display: flex;
+    gap: 0.2rem;
+    padding-left: 0.6rem;
+    border-left: 1px solid var(--line);
+  }
+  .langswitch button{
+    border: none;
+    background: transparent;
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 0.35rem 0.55rem;
+    border-radius: 8px;
+    cursor: pointer;
+    color: var(--ink-soft);
+    font-family: inherit;
+  }
+  .langswitch button.active{
+    background: var(--sky);
+    color: var(--sea-deep);
+  }
+  .roomnav a{
+    display: inline-block;
+    text-decoration: none;
+    color: var(--ink-soft);
+    font-size: 0.82rem;
+    font-weight: 600;
+    padding: 0.4rem 0.85rem;
+    border-radius: 100px;
+    margin-right: 0.4rem;
+    transition: background 0.15s ease, color 0.15s ease;
+  }
+  .roomnav a:hover, .roomnav a.active{
+    background: var(--sky);
+    color: var(--sea-deep);
+  }
+
+  /* ---------- MAIN ---------- */
+  main{
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 3rem 1.5rem 5rem;
+  }
+
+  .room{
+    padding: 2.6rem 0;
+    position: relative;
+    scroll-margin-top: 4.2rem;
+  }
+  .room:not(:last-child)::after{
+    content: "";
+    display: block;
+    height: 5px;
+    margin-top: 1.8rem;
+    border-radius: 3px;
+    background-image: repeating-linear-gradient(
+      130deg, var(--rope) 0 5px, var(--driftwood) 5px 10px
+    );
+    opacity: 0.5;
+  }
+
+  .room-head{
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+    margin-bottom: 1.1rem;
+  }
+  .room-icon{
+    flex: none;
+    width: 42px; height: 42px;
+    border-radius: 10px;
+    background: var(--sky-pale);
+    border: 1px solid var(--line);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .room-icon svg{ width: 22px; height: 22px; stroke: var(--driftwood); fill: none; stroke-width: 1.6; }
+  .room h2{ font-size: 1.5rem; }
+  .room-sub{
+    font-size: 0.85rem;
+    color: var(--sea-light);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  .room p, .room li{
+    color: var(--ink-soft);
+    font-size: 0.98rem;
+  }
+
+  .room ul{
+    list-style: none;
+    margin-top: 0.6rem;
+  }
+  .room ul li{
+    position: relative;
+    padding-left: 1.2rem;
+    margin-bottom: 0.5rem;
+  }
+  .room ul li::before{
+    content: "";
+    position: absolute;
+    left: 0; top: 0.55rem;
+    width: 6px; height: 6px;
+    background: var(--seafoam);
+    border-radius: 50%;
+  }
+
+  .fact-row{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.7rem;
+    margin-top: 1rem;
+  }
+  .fact{
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-top: 3px solid var(--sky);
+    border-radius: 10px;
+    padding: 0.7rem 1rem;
+    font-size: 0.88rem;
+  }
+  .fact b{
+    display:block;
+    color: var(--sea);
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 0.15rem;
+  }
+
+  .note{
+    background: #F1EAD8;
+    border-left: 3px solid var(--driftwood);
+    padding: 0.85rem 1rem;
+    border-radius: 0 8px 8px 0;
+    font-size: 0.9rem;
+    margin-top: 1rem;
+    color: var(--ink-soft);
+  }
+
+  .placeholder{
+    background: #FFF7E8;
+    color: #8A6A2C;
+    padding: 0.05rem 0.4rem;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 0.92em;
+    white-space: nowrap;
+  }
+
+  .emergency{
+    background: var(--coral);
+    color: #FFF8F1;
+    border-radius: 14px;
+    padding: 1.6rem;
+    margin-top: 0.6rem;
+  }
+  .emergency .fact{
+    background: rgba(255,255,255,0.16);
+    border-color: rgba(255,255,255,0.3);
+    border-top: 3px solid rgba(255,255,255,0.55);
+    color: #FFF8F1;
+  }
+  .emergency .fact b{ color: #FFE4D6; }
+
+  footer{
+    text-align: center;
+    padding: 3rem 1.5rem 4rem;
+    color: var(--ink-soft);
+    font-size: 0.85rem;
+  }
+  footer .display{ font-size: 1.1rem; margin-bottom: 0.4rem; }
+
+  /* manual / external link badge */
+  .doclink{
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    text-decoration: none;
+    background: var(--sky-pale);
+    color: var(--sea);
+    border: 1px solid rgba(30,110,116,0.25);
+    border-radius: 100px;
+    padding: 0.1rem 0.6rem;
+    font-size: 0.78rem;
+    font-weight: 600;
+    white-space: nowrap;
+    margin-left: 0.15rem;
+    vertical-align: baseline;
+  }
+  .doclink:hover{ background: var(--sky); color: var(--sea-deep); }
+  .doclink svg{ width: 12px; height: 12px; stroke: currentColor; fill: none; stroke-width: 2; }
+
+  /* numbered steps (hot tub) */
+  ol.steps{ counter-reset: step; list-style: none; margin-top: 0.6rem; }
+  ol.steps li{
+    position: relative;
+    padding-left: 2rem;
+    margin-bottom: 0.7rem;
+    color: var(--ink-soft);
+    font-size: 0.98rem;
+  }
+  ol.steps li::before{
+    counter-increment: step;
+    content: counter(step);
+    position: absolute;
+    left: 0; top: 0.05rem;
+    width: 1.4rem; height: 1.4rem;
+    background: var(--sea);
+    color: var(--paper);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.75rem; font-weight: 700;
+    font-family: "Work Sans", sans-serif;
+  }
+  ol.steps li::marker{ content: none; }
+
+  /* language switch flags */
+  .langswitch button{
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+  }
+  .flag{
+    width: 20px; height: 14px;
+    border-radius: 2px;
+    display: block;
+    box-shadow: 0 0 0 1px rgba(0,0,0,0.12);
+    flex: none;
+  }
+
+  /* discount callout */
+  .promo{
+    background: linear-gradient(135deg, var(--sky) 0%, var(--sea-light) 100%);
+    color: #fff;
+    border-radius: 16px;
+    padding: 1.6rem 1.5rem;
+    text-align: center;
+    margin-top: 1.4rem;
+  }
+  .promo h3{ color: #fff; font-size: 1.25rem; margin-bottom: 0.4rem; }
+  .promo p{ color: rgba(255,255,255,0.92); font-size: 0.92rem; margin-bottom: 1rem; }
+  .promo .code{
+    display: inline-block;
+    background: rgba(255,255,255,0.9);
+    color: var(--sea-deep);
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    padding: 0.35rem 0.9rem;
+    border-radius: 8px;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+  }
+  .promo a.promo-btn{
+    display: inline-block;
+    background: var(--coral);
+    color: #fff;
+    text-decoration: none;
+    font-weight: 700;
+    padding: 0.6rem 1.4rem;
+    border-radius: 100px;
+    font-size: 0.9rem;
+  }
+  .promo a.promo-btn:hover{ background: #cf5638; }
+
+  /* guestbook */
+  .gb-form{
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 1.3rem;
+    margin-top: 1rem;
+  }
+  .gb-input{
+    width: 100%;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 0.7rem 0.9rem;
+    font-family: inherit;
+    font-size: 0.95rem;
+    color: var(--ink);
+    background: #fff;
+    margin-bottom: 0.8rem;
+    resize: vertical;
+  }
+  .gb-input:focus{ outline: none; border-color: var(--sea-light); box-shadow: 0 0 0 3px var(--sky-pale); }
+  .gb-stars{ display: flex; gap: 0.15rem; margin-bottom: 0.8rem; }
+  .gb-stars button{
+    background: none; border: none; cursor: pointer;
+    font-size: 1.8rem; line-height: 1; padding: 0 0.05rem;
+    color: #D8CEBB; transition: color 0.1s ease; font-family: inherit;
+  }
+  .gb-stars button.on{ color: #E9B949; }
+  .gb-btn{
+    background: var(--sea);
+    color: var(--paper);
+    border: none;
+    border-radius: 100px;
+    padding: 0.65rem 1.5rem;
+    font-family: inherit;
+    font-size: 0.9rem;
+    font-weight: 700;
+    cursor: pointer;
+  }
+  .gb-btn:hover{ background: var(--sea-deep); }
+  .gb-msg{ margin-top: 0.8rem; font-size: 0.9rem; color: var(--sea); font-weight: 600; }
+  .gb-note{
+    background: #F1EAD8;
+    border-left: 3px solid var(--driftwood);
+    padding: 0.75rem 1rem;
+    border-radius: 0 8px 8px 0;
+    font-size: 0.85rem;
+    color: var(--ink-soft);
+    margin-top: 1rem;
+  }
+  .gb-wall{ font-size: 1.05rem; margin-top: 1.8rem; margin-bottom: 0.6rem; }
+  .gb-list{ display: flex; flex-direction: column; gap: 0.8rem; }
+  .gb-entry{
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-left: 3px solid var(--sky);
+    border-radius: 0 10px 10px 0;
+    padding: 0.85rem 1rem;
+  }
+  .gb-entry .gb-head{ display: flex; justify-content: space-between; align-items: baseline; gap: 0.5rem; margin-bottom: 0.25rem; }
+  .gb-entry .gb-who{ font-weight: 700; color: var(--sea-deep); font-size: 0.92rem; }
+  .gb-entry .gb-when{ color: var(--ink-soft); font-size: 0.75rem; }
+  .gb-entry .gb-rating{ color: #E9B949; font-size: 0.85rem; letter-spacing: 0.05em; }
+  .gb-entry p{ margin: 0.2rem 0 0; font-size: 0.95rem; color: var(--ink-soft); }
+  .gb-empty{ color: var(--ink-soft); font-size: 0.92rem; font-style: italic; }
+
+  @media print{
+    .roomnav{ display:none; }
+    .hero{ background: var(--sea) !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero-inner">
+    <div class="eyebrow" data-i18n="hero.eyebrow">Husguide til gæster</div>
+    <h1 data-i18n="hero.title">Velkommen til Beach House på Bøtøvej</h1>
+    <p data-i18n="hero.subtitle">Her finder du alt det praktiske om huset — fra wifi-kode til hvordan brændeovnen tændes. God fornøjelse med opholdet.</p>
+    <div class="hero-meta">
+      <div><span data-i18n="hero.meta.address">Adresse</span>Bøtøvej 47, 4873 Væggerløse</div>
+      <div><span data-i18n="hero.meta.checkin">Indtjekning</span>16:00</div>
+      <div><span data-i18n="hero.meta.checkout">Udtjekning</span>11:00</div>
+    </div>
+  </div>
+  <div class="waves">
+    <svg viewBox="0 0 1200 60" preserveAspectRatio="none"><path d="M0,30 C150,55 350,5 600,30 C850,55 1050,5 1200,30 L1200,60 L0,60 Z" fill="#F2E9D8"></path></svg>
+  </div>
+</header>
+
+<nav class="roomnav" id="roomnav">
+  <div class="links">
+    <a href="#ankomst" data-i18n="nav.ankomst">Ankomst</a>
+    <a href="#internet" data-i18n="nav.internet">Wifi &amp; strøm</a>
+    <a href="#koekken" data-i18n="nav.koekken">Køkken</a>
+    <a href="#varme" data-i18n="nav.varme">Varme &amp; brænde</a>
+    <a href="#affald" data-i18n="nav.affald">Affald</a>
+    <a href="#ude" data-i18n="nav.ude">Udenfor</a>
+    <a href="#regler" data-i18n="nav.regler">Husregler</a>
+    <a href="#noed" data-i18n="nav.noed">Nødsituation</a>
+    <a href="#omraadet" data-i18n="nav.omraadet">Oplevelser i nærheden</a>
+    <a href="#kontakt" data-i18n="nav.kontakt">Kontakt</a>
+    <a href="#gaestebog" data-i18n="nav.gaestebog">Gæstebog</a>
+  </div>
+  <div class="langswitch">
+    <button type="button" data-lang="da" aria-label="Dansk">
+      <svg class="flag" viewBox="0 0 28 20"><rect width="28" height="20" fill="#C8102E"/><rect x="9" width="4" height="20" fill="#fff"/><rect y="8" width="28" height="4" fill="#fff"/></svg>DA
+    </button>
+    <button type="button" data-lang="en" aria-label="English">
+      <svg class="flag" viewBox="0 0 28 20"><clipPath id="ukc"><rect width="28" height="20"/></clipPath><g clip-path="url(#ukc)"><rect width="28" height="20" fill="#012169"/><path d="M0,0 L28,20 M28,0 L0,20" stroke="#fff" stroke-width="4"/><path d="M0,0 L28,20 M28,0 L0,20" stroke="#C8102E" stroke-width="2.4"/><rect x="11" width="6" height="20" fill="#fff"/><rect y="7" width="28" height="6" fill="#fff"/><rect x="12.5" width="3" height="20" fill="#C8102E"/><rect y="8.5" width="28" height="3" fill="#C8102E"/></g></svg>EN
+    </button>
+    <button type="button" data-lang="de" aria-label="Deutsch">
+      <svg class="flag" viewBox="0 0 28 20"><rect width="28" height="6.67" fill="#000"/><rect y="6.67" width="28" height="6.67" fill="#DD0000"/><rect y="13.33" width="28" height="6.67" fill="#FFCE00"/></svg>DE
+    </button>
+  </div>
+</nav>
+
+<main>
+
+  <section class="room" id="ankomst">
+    <div class="room-head">
+      <div class="room-icon"><svg viewBox="0 0 24 24"><path d="M14 8a3 3 0 1 0-3 3l-6 6v3h3l6-6a3 3 0 0 0 0-6z"/><circle cx="17" cy="5" r="0"/></svg></div>
+      <div>
+        <div class="room-sub" data-i18n="ankomst.sub">Første stop</div>
+        <h2 data-i18n="ankomst.title">Ankomst &amp; afrejse</h2>
+      </div>
+    </div>
+    <p data-i18n="ankomst.p">Nøglen finder du i en nøgleboks ved hoveddøren.</p>
+    <div class="fact-row">
+      <div class="fact"><b data-i18n="ankomst.fact1">Nøgleboks-kode</b><span data-i18n="ankomst.fact1val">Sendt på mail</span></div>
+      <div class="fact"><b data-i18n="ankomst.fact2">Indtjekning fra</b>16:00</div>
+      <div class="fact"><b data-i18n="ankomst.fact3">Udtjekning senest</b>11:00</div>
+    </div>
+    <ul style="margin-top:1.2rem;">
+      <li data-i18n="ankomst.li1">Læg nøglen tilbage i nøgleboksen ved afrejse.</li>
+      <li data-i18n="ankomst.li2">Slå ude-lys fra og tjek at vinduer og døre er lukket.</li>
+      <li data-i18n="ankomst.li3">Se rengøringstjek under <a href="#regler">Husregler</a> før I kører.</li>
+    </ul>
+  </section>
+
+  <section class="room" id="internet">
+    <div class="room-head">
+      <div class="room-icon"><svg viewBox="0 0 24 24"><path d="M2 8.5a15 15 0 0 1 20 0"/><path d="M5.5 12a10 10 0 0 1 13 0"/><path d="M9 15.5a5 5 0 0 1 6 0"/><circle cx="12" cy="19" r="1"/></svg></div>
+      <div>
+        <div class="room-sub" data-i18n="internet.sub">Praktisk</div>
+        <h2 data-i18n="internet.title">Wifi &amp; strøm</h2>
+      </div>
+    </div>
+    <div class="fact-row">
+      <div class="fact"><b data-i18n="internet.fact1">Wifi-navn</b>The_beach_house</div>
+      <div class="fact"><b data-i18n="internet.fact2">Wifi-kode</b>sunshine47</div>
+      <div class="fact"><b data-i18n="internet.fact3">Elmåler</b><span data-i18n="internet.fact3val">Aflæses digitalt</span></div>
+    </div>
+    <p style="margin-top:1rem;" data-i18n="internet.p">Ruteren står i stuen på reolen. Genstart den ved at trække stikket i 10 sekunder, hvis internettet driller. Elmåleren aflæses digitalt og skal ikke aflæses manuelt.</p>
+  </section>
+
+  <section class="room" id="koekken">
+    <div class="room-head">
+      <div class="room-icon"><svg viewBox="0 0 24 24"><path d="M4 3v8a4 4 0 0 0 4 4v6"/><path d="M8 3v8"/><path d="M4 3v6"/><path d="M18 3c-1.5 2-1.5 6 0 8s1.5 6 0 9"/></svg></div>
+      <div>
+        <div class="room-sub" data-i18n="koekken.sub">Apparater</div>
+        <h2 data-i18n="koekken.title">Køkken</h2>
+      </div>
+    </div>
+    <ul>
+      <li data-i18n="koekken.li1"><b>Filterkaffemaskine:</b> almindelig filterkaffe. <a class="doclink" href="https://media.power-cdn.net/documents/manuals/4894526097936/4894526097936_5_manual_en.pdf" target="_blank" rel="noopener">Vejledning<svg viewBox="0 0 24 24"><path d="M14 3h7v7"/><path d="M10 14 21 3"/><path d="M21 14v5a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5"/></svg></a></li>
+      <li data-i18n="koekken.li2"><b>Kapselkaffemaskine:</b> der findes 2 indsatse — én til Nespresso-kapsler og én til Dolce Gusto. <a class="doclink" href="https://media.power-cdn.net/documents/manuals/4894526093600/4894526093600_1_manual_dk.pdf" target="_blank" rel="noopener">Vejledning<svg viewBox="0 0 24 24"><path d="M14 3h7v7"/><path d="M10 14 21 3"/><path d="M21 14v5a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5"/></svg></a></li>
+      <li data-i18n="koekken.li3"><b>Opvaskemaskine:</b> brug 90-minutters-knappen til almindelig opvask, eller auto-programmet. <a class="doclink" href="https://media.power-cdn.net/documents/manuals/4894526082239/4894526082239_24_manual_en.pdf" target="_blank" rel="noopener">Vejledning<svg viewBox="0 0 24 24"><path d="M14 3h7v7"/><path d="M10 14 21 3"/><path d="M21 14v5a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5"/></svg></a></li>
+      <li data-i18n="koekken.li4"><b>Ovn:</b> fungerer som en almindelig ovn. <a class="doclink" href="https://media.power-cdn.net/documents/manuals/4894526076740/4894526076740_20_manual_dk.pdf" target="_blank" rel="noopener">Vejledning<svg viewBox="0 0 24 24"><path d="M14 3h7v7"/><path d="M10 14 21 3"/><path d="M21 14v5a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5"/></svg></a></li>
+      <li data-i18n="koekken.li5"><b>Kogeplade:</b> <a class="doclink" href="https://media.power-cdn.net/documents/manuals/4894526100322/4894526100322_33_manual_en.pdf" target="_blank" rel="noopener">Vejledning<svg viewBox="0 0 24 24"><path d="M14 3h7v7"/><path d="M10 14 21 3"/><path d="M21 14v5a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5"/></svg></a></li>
+      <li data-i18n="koekken.li6"><b>Steamer:</b> strygejernet er erstattet af en steamer af sikkerhedshensyn. Den står i højskabet i køkkenet.</li>
+      <li data-i18n="koekken.li7"><b>Vandet:</b> postevand kan drikkes.</li>
+    </ul>
+    <div class="note" data-i18n="koekken.note">Flere vejledninger findes i højskabet i køkkenet. Sæt gerne service tilbage i skabene, som I fandt dem — det gør overleveringen nemmere for næste gæst.</div>
+  </section>
+
+  <section class="room" id="varme">
+    <div class="room-head">
+      <div class="room-icon"><svg viewBox="0 0 24 24"><path d="M12 2c2 4-2 5-2 9a4 4 0 0 0 8 0c0-2-1-3-1-3s0 2-1 2c1-4-2-5-2-8-1 0-2 0-2 0z"/></svg></div>
+      <div>
+        <div class="room-sub" data-i18n="varme.sub">Hold varmen</div>
+        <h2 data-i18n="varme.title">Varme &amp; brændeovn</h2>
+      </div>
+    </div>
+    <ul>
+      <li data-i18n="varme.li1"><b>Varmepumpe:</b> fjernbetjeningen hænger på væggen ved siden af pumpen — sæt den gerne tilbage samme sted. <span class="placeholder">[Indsæt link til varmepumpe-vejledning]</span></li>
+      <li data-i18n="varme.li2"><b>Brændeovn:</b> hiv lidt ud i skuffen eller åbn spjældet en smule, så der kommer ekstra luft ind. Derefter kan den lukkes til igen. Brænde og optænding er ikke inkluderet.</li>
+      <li data-i18n="varme.li3"><b>Vigtigt ved brug af brændeovn:</b> sluk gerne for varmepumpen, mens brændeovnen er tændt — ellers husk at aktivere brændeovn-funktionen på varmepumpen.</li>
+    </ul>
+    <div class="note" data-i18n="varme.note">Lad aldrig ilden være uden opsyn, og sluk helt inden I forlader huset eller går i seng.</div>
+  </section>
+
+  <section class="room" id="affald">
+    <div class="room-head">
+      <div class="room-icon"><svg viewBox="0 0 24 24"><path d="M4 7h16"/><path d="M6 7l1 13a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2l1-13"/><path d="M9 7V4h6v3"/></svg></div>
+      <div>
+        <div class="room-sub" data-i18n="affald.sub">Sortering</div>
+        <h2 data-i18n="affald.title">Affald</h2>
+      </div>
+    </div>
+    <p data-i18n="affald.p1">Affald sorteres i spandene ved huset. Se REFA's sorteringsvejledning for, hvad der skal hvorhen: <a class="doclink" href="https://www.refa.dk/wp-content/uploads/2026/06/Sortering-dansk-1.pdf" target="_blank" rel="noopener">Sorteringsvejledning<svg viewBox="0 0 24 24"><path d="M14 3h7v7"/><path d="M10 14 21 3"/><path d="M21 14v5a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5"/></svg></a></p>
+    <p data-i18n="affald.p2" style="margin-top:0.8rem;"><b>Nærmeste genbrugsplads:</b> Marielyst Genbrugsplads, Godthåbs Allé 1A, 4873 Væggerløse.</p>
+  </section>
+
+  <section class="room" id="ude">
+    <div class="room-head">
+      <div class="room-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M4.2 4.2l2 2M17.8 17.8l2 2M2 12h3M19 12h3M4.2 19.8l2-2M17.8 6.2l2-2"/></svg></div>
+      <div>
+        <div class="room-sub" data-i18n="ude.sub">Terrasse &amp; have</div>
+        <h2 data-i18n="ude.title">Udenfor</h2>
+      </div>
+    </div>
+    <ul>
+      <li data-i18n="ude.li1"><b>Grill:</b> står på siden af huset. Husk at tømme den, når I er færdige.</li>
+      <li data-i18n="ude.li2"><b>Havemøbler:</b> må gerne flyttes, men stil dem tilbage ved afrejse, hvis det blæser.</li>
+      <li data-i18n="ude.li3"><b>Robotplæneklipper "Grassy":</b> vores robotplæneklipper kører først ud efter kl. 11 om lørdagen og klipper græsset til hver ankomst. Skulle den fare vild og ikke kunne finde hjem, må I gerne hjælpe den på vej — den bider ikke :) Husk at trykke på den store røde STOP-knap. Beder den om en kode, er det den samme som til nøgleboksen. På forhånd tusind tak!</li>
+    </ul>
+
+    <h3 style="font-size:1rem; margin-top:1.8rem; margin-bottom:0.5rem; color: var(--sea-light); text-transform:uppercase; letter-spacing:0.06em;" data-i18n="ude.hottub.h">Vildmarksbad</h3>
+    <p data-i18n="ude.hottub.intro">Vildmarksbadet tager ca. 1 time at fylde med vand. Sådan gør I:</p>
+    <ol class="steps">
+      <li data-i18n="ude.hottub.s1"><b>Fyld vand på:</b> brug den gule vandslange på venstre side af huset (ved lågen). Når hanen tændes, ekspanderer slangen, så den bliver længere.</li>
+      <li data-i18n="ude.hottub.s2"><b>Sluk for vandet:</b> hanen behøver ikke strammes hårdt til. Når den slukkes, tømmer den det resterende vand ud, så den er frostfri.</li>
+      <li data-i18n="ude.hottub.s3"><b>Tænd op i ovnen:</b> først når der er nok vand i karret, og den høje sideplads er dækket af vand. Ovnhanen sidder i bunden af karret ved ovnen.</li>
+      <li data-i18n="ude.hottub.s4"><b>Opvarmning:</b> alt efter udetemperaturen tager det 2-4 timer at varme vandet op til ca. 30 grader. Vi anbefaler ikke over 40 grader.</li>
+      <li data-i18n="ude.hottub.s5"><b>Tømning:</b> brug en dykpumpe for hurtigere tømning. Brug vandslangen på Gardena-vognen ved siden af badet, og træk den ud til bruseren på badeværelset. Det sidste vand kan tømmes ud på græsset, når dykpumpen ikke kan tage mere.</li>
+    </ol>
+    <div class="note" data-i18n="ude.hottub.note">Husk: tænd først op i ovnen, når vandet dækker den høje sideplads — ellers kan ovnen tage skade.</div>
+  </section>
+
+  <section class="room" id="regler">
+    <div class="room-head">
+      <div class="room-icon"><svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg></div>
+      <div>
+        <div class="room-sub" data-i18n="regler.sub">God stil</div>
+        <h2 data-i18n="regler.title">Husregler</h2>
+      </div>
+    </div>
+    <ul>
+      <li data-i18n="regler.li1">Rygning foregår udendørs.</li>
+      <li data-i18n="regler.li2">Ro efter kl. 22 af hensyn til naboerne.</li>
+      <li data-i18n="regler.li3">Kæledyr er ikke tilladt.</li>
+      <li data-i18n="regler.li4">Maks antal gæster: 8 personer.</li>
+    </ul>
+    <div class="note" data-i18n="regler.note"><b>Ved afrejse:</b> opvask færdig, affald tømt, møbler stillet på plads, og huset låst.</div>
+    <div class="note" data-i18n="regler.tip"><b>Godt tip til soveværelserne:</b> tænder og slukker man loftlampen inden for 3 sekunder, dæmpes lyset. Det kan dæmpes i 3 forskellige niveauer.</div>
+  </section>
+
+  <section class="room" id="noed">
+    <div class="room-head">
+      <div class="room-icon"><svg viewBox="0 0 24 24"><path d="M12 9v4M12 17h.01"/><path d="M10.3 3.9L2.4 18a2 2 0 0 0 1.7 3h15.8a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/></svg></div>
+      <div>
+        <div class="room-sub" data-i18n="noed.sub">God at have</div>
+        <h2 data-i18n="noed.title">I nødstilfælde</h2>
+      </div>
+    </div>
+    <div class="emergency">
+      <div class="fact-row">
+        <div class="fact"><b data-i18n="noed.fact1">Alarmcentral</b>112</div>
+        <div class="fact"><b data-i18n="noed.fact2">Lægevagt</b>70 11 07 07</div>
+        <div class="fact"><b data-i18n="noed.fact3">Nærmeste sygehus</b><span data-i18n="noed.fact3val">Sjællands Universitetshospital, Nykøbing F., Fjordvej 15 — ca. 20 min / 17 km</span></div>
+      </div>
+    </div>
+    <p style="margin-top:1rem;" data-i18n="noed.p1">Førstehjælpskasse og en lille brandslukker findes i højskabet i køkkenet.</p>
+    <p style="margin-top:0.6rem;" data-i18n="noed.p2">Tjek for strømafbrydelser her: <a class="doclink" href="https://cerius.dk/stroemafbrydelse/" target="_blank" rel="noopener">Cerius strømafbrydelser<svg viewBox="0 0 24 24"><path d="M14 3h7v7"/><path d="M10 14 21 3"/><path d="M21 14v5a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5"/></svg></a></p>
+  </section>
+
+  <section class="room" id="omraadet">
+    <div class="room-head">
+      <div class="room-icon"><svg viewBox="0 0 24 24"><path d="M9 20l-5.447-2.724A1 1 0 0 1 3 16.382V5.618a1 1 0 0 1 1.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0 0 21 18.382V7.618a1 1 0 0 0-.553-.894L15 4m0 13V4m0 0L9 7"/></svg></div>
+      <div>
+        <div class="room-sub" data-i18n="omraadet.sub">Inden for ca. 1 times kørsel</div>
+        <h2 data-i18n="omraadet.title">Oplevelser i nærheden</h2>
+      </div>
+    </div>
+    <p data-i18n="omraadet.intro">Huset ligger få minutter fra Marielyst, så I har lang badestrand og masser af aktiviteter lige uden for døren. Her er et udpluk til dage, hvor I vil lidt længere ud.</p>
+
+    <h3 style="font-size:1rem; margin-top:1.6rem; margin-bottom:0.4rem; color: var(--sea-light); text-transform:uppercase; letter-spacing:0.06em;" data-i18n="omraadet.h1">Strand &amp; natur</h3>
+    <ul>
+      <li data-i18n="omraadet.li1"><b>Marielyst / Bøtø Strand</b> — en af Danmarks bredeste og mest populære badestrande, med fint sand og lavvandet hav (5 min).</li>
+      <li data-i18n="omraadet.li2"><b>Marielyst Seebrücke</b> — bademole ud i vandet, god til solnedgang og adgang for kørestole/barnevogne (5 min).</li>
+      <li data-i18n="omraadet.li3"><b>Bøtø Naturpark</b> — vildmark med frilevende vilde heste og kvæg, fine gå- og cykelruter (10 min).</li>
+      <li data-i18n="omraadet.li4"><b>Bøtøskoven</b> — skov med afmærkede ruter og frit strejfende dyr (10 min).</li>
+    </ul>
+
+    <h3 style="font-size:1rem; margin-top:1.6rem; margin-bottom:0.4rem; color: var(--sea-light); text-transform:uppercase; letter-spacing:0.06em;" data-i18n="omraadet.h2">Familie &amp; underholdning</h3>
+    <ul>
+      <li data-i18n="omraadet.li5"><b>Golf &amp; Fun Park</b> — adventure golf, disc golf, segway og legeplads, nok til en hel dag (10 min).</li>
+      <li data-i18n="omraadet.li6"><b>Family Fun Park Marielyst</b> — forlystelser til børnefamilier midt i Marielyst (10 min).</li>
+      <li data-i18n="omraadet.li7"><b>Marielyst Gokart &amp; Paintball Center</b> — gokart-bane og paintball (15 min).</li>
+    </ul>
+
+    <h3 style="font-size:1rem; margin-top:1.6rem; margin-bottom:0.4rem; color: var(--sea-light); text-transform:uppercase; letter-spacing:0.06em;" data-i18n="omraadet.h3">Byer &amp; udflugter</h3>
+    <ul>
+      <li data-i18n="omraadet.li8"><b>Gedser Fyr &amp; Gedser Odde</b> — Danmarks sydligste punkt med fyrtårn og udsigt over Østersøen (20-25 min).</li>
+      <li data-i18n="omraadet.li9"><b>Nykøbing Falster</b> — gågade, caféer, restauranter og indkøb (20-25 min).</li>
+      <li data-i18n="omraadet.li10"><b>Stouby Mølle</b> — bevaret stubmølle fra 1790 med glaspusteri og udsigt (15-20 min).</li>
+      <li data-i18n="omraadet.li11"><b>Danmarks Borgcenter, Vordingborg</b> — museum og borgruin om Valdemarernes middelalder, med Gåsetårnet (ca. 40-45 min).</li>
+    </ul>
+
+    <div class="note" data-i18n="omraadet.note">Har I lidt mere tid en enkelt dag, er de kridhvide klipper ved <b>Møns Klint</b> et besøg værd — det ligger dog en tand uden for en times kørsel (nærmere 70 min).</div>
+  </section>
+
+  <section class="room" id="kontakt">
+    <div class="room-head">
+      <div class="room-icon"><svg viewBox="0 0 24 24"><path d="M4 4h16v12H7l-3 3z"/></svg></div>
+      <div>
+        <div class="room-sub" data-i18n="kontakt.sub">Spørgsmål?</div>
+        <h2 data-i18n="kontakt.title">Kontakt til bureauet</h2>
+      </div>
+    </div>
+    <div class="fact-row">
+      <div class="fact"><b data-i18n="kontakt.fact1">Telefon</b>+45 78 74 62 62</div>
+      <div class="fact"><b data-i18n="kontakt.fact2">E-mail</b>kundeservice@campaya.dk</div>
+      <div class="fact"><b data-i18n="kontakt.fact3">Web</b>campaya.dk</div>
+    </div>
+    <p style="margin-top:1rem;" data-i18n="kontakt.p">Kontakt endelig Campaya, hvis noget driller under opholdet — så bliver det løst.</p>
+
+    <div class="promo">
+      <h3 data-i18n="promo.title">10% på jeres næste ophold</h3>
+      <p data-i18n="promo.text">Tak fordi I har booket vores hus! I får 10% rabat på næste booking med denne kode:</p>
+      <div class="code">R68U-78</div>
+      <div>
+        <a class="promo-btn" href="https://www.campaya.dk/mh273388?discount=R68U-78&utm_source=private-link" target="_blank" rel="noopener" data-i18n="promo.btn">Book med rabat</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="room" id="gaestebog">
+    <div class="room-head">
+      <div class="room-icon"><svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></div>
+      <div>
+        <div class="room-sub" data-i18n="gaest.sub">Del din oplevelse</div>
+        <h2 data-i18n="gaest.title">Gæstebog</h2>
+      </div>
+    </div>
+    <p data-i18n="gaest.intro">Vi vil rigtig gerne høre, hvordan jeres ophold har været. Skriv en hilsen herunder — så kan kommende gæster læse med.</p>
+
+    <div class="gb-form">
+      <input id="gbName" class="gb-input" type="text" data-i18n-ph="gaest.nameph" placeholder="Navn (valgfrit)">
+      <div class="gb-stars" id="gbStars" role="radiogroup" aria-label="Rating">
+        <button type="button" data-val="1" aria-label="1">★</button>
+        <button type="button" data-val="2" aria-label="2">★</button>
+        <button type="button" data-val="3" aria-label="3">★</button>
+        <button type="button" data-val="4" aria-label="4">★</button>
+        <button type="button" data-val="5" aria-label="5">★</button>
+      </div>
+      <textarea id="gbText" class="gb-input" rows="3" data-i18n-ph="gaest.textph" placeholder="Skriv en kommentar om jeres ophold…"></textarea>
+      <button type="button" id="gbSubmit" class="gb-btn" data-i18n="gaest.submit">Del din oplevelse</button>
+      <div id="gbMsg" class="gb-msg" aria-live="polite"></div>
+    </div>
+
+    <h3 class="gb-wall" data-i18n="gaest.wall">Hilsener fra tidligere gæster</h3>
+    <div id="gbList" class="gb-list"></div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="display" data-i18n="footer.title">God ferie i Beach House på Bøtøvej</div>
+  <div data-i18n="footer.sub">Vi håber, I får et skønt ophold.</div>
+</footer>
+
+<script>
+  const links = document.querySelectorAll('.roomnav a');
+  const sections = document.querySelectorAll('.room');
+  const nav = document.getElementById('roomnav');
+
+  const setActive = () => {
+    let current = sections[0]?.id;
+    sections.forEach(sec => {
+      const rect = sec.getBoundingClientRect();
+      if (rect.top <= 90) current = sec.id;
+    });
+    links.forEach(a => {
+      a.classList.toggle('active', a.getAttribute('href') === '#' + current);
+    });
+  };
+  window.addEventListener('scroll', setActive, { passive: true });
+  setActive();
+
+  const extIcon = '<svg viewBox="0 0 24 24"><path d="M14 3h7v7"/><path d="M10 14 21 3"/><path d="M21 14v5a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5"/></svg>';
+  const dl = (href, label) => '<a class="doclink" href="' + href + '" target="_blank" rel="noopener">' + label + extIcon + '</a>';
+
+  const M = {
+    filter: "https://media.power-cdn.net/documents/manuals/4894526097936/4894526097936_5_manual_en.pdf",
+    capsule: "https://media.power-cdn.net/documents/manuals/4894526093600/4894526093600_1_manual_dk.pdf",
+    dish: "https://media.power-cdn.net/documents/manuals/4894526082239/4894526082239_24_manual_en.pdf",
+    oven: "https://media.power-cdn.net/documents/manuals/4894526076740/4894526076740_20_manual_dk.pdf",
+    hob: "https://media.power-cdn.net/documents/manuals/4894526100322/4894526100322_33_manual_en.pdf",
+    refaEn: "https://www.refa.dk/wp-content/uploads/2026/06/Sorteringsvejledning-paa-engelsk-1-1.pdf",
+    refaDe: "https://www.refa.dk/wp-content/uploads/2026/06/Sorteringsvejledning-paa-tysk.pdf",
+    cerius: "https://cerius.dk/stroemafbrydelse/"
+  };
+
+  const translations = {
+    en: {
+      "nav.ankomst": "Arrival", "nav.internet": "Wifi &amp; power", "nav.koekken": "Kitchen",
+      "nav.varme": "Heating &amp; fire", "nav.affald": "Waste", "nav.ude": "Outdoors",
+      "nav.regler": "House rules", "nav.noed": "Emergencies", "nav.omraadet": "Nearby attractions", "nav.kontakt": "Contact", "nav.gaestebog": "Guestbook",
+      "hero.eyebrow": "Guest house guide",
+      "hero.title": "Welcome to Beach House på Bøtøvej",
+      "hero.subtitle": "Everything practical about the house — from the wifi code to lighting the wood stove. Enjoy your stay.",
+      "hero.meta.address": "Address", "hero.meta.checkin": "Check-in", "hero.meta.checkout": "Check-out",
+      "ankomst.sub": "First stop", "ankomst.title": "Arrival &amp; departure",
+      "ankomst.p": "You'll find the key in a key box by the front door.",
+      "ankomst.fact1": "Key box code", "ankomst.fact1val": "Sent by email", "ankomst.fact2": "Check-in from", "ankomst.fact3": "Check-out by",
+      "ankomst.li1": "Put the key back in the key box when you leave.",
+      "ankomst.li2": "Turn off outdoor lights and make sure windows and doors are closed.",
+      "ankomst.li3": "See the cleaning checklist under <a href=\"#regler\">House rules</a> before you drive off.",
+      "internet.sub": "Practical", "internet.title": "Wifi &amp; power",
+      "internet.fact1": "Wifi name", "internet.fact2": "Wifi password", "internet.fact3": "Power meter", "internet.fact3val": "Read digitally",
+      "internet.p": "The router is in the living room, on the shelf. Restart it by unplugging it for 10 seconds if the internet acts up. The power meter is read digitally and doesn't need manual reading.",
+      "koekken.sub": "Appliances", "koekken.title": "Kitchen",
+      "koekken.li1": "<b>Filter coffee machine:</b> regular filter coffee. " + dl(M.filter, "Manual"),
+      "koekken.li2": "<b>Capsule coffee machine:</b> there are 2 inserts — one for Nespresso capsules and one for Dolce Gusto. " + dl(M.capsule, "Manual"),
+      "koekken.li3": "<b>Dishwasher:</b> use the 90-minute button for a normal wash, or the auto program. " + dl(M.dish, "Manual"),
+      "koekken.li4": "<b>Oven:</b> works like a standard oven. " + dl(M.oven, "Manual"),
+      "koekken.li5": "<b>Hob:</b> " + dl(M.hob, "Manual"),
+      "koekken.li6": "<b>Steamer:</b> the iron has been replaced with a clothes steamer for safety. It's in the tall cabinet in the kitchen.",
+      "koekken.li7": "<b>Water:</b> tap water is safe to drink.",
+      "koekken.note": "More manuals can be found in the tall cabinet in the kitchen. Please put dishes back where you found them — it makes handover easier for the next guests.",
+      "varme.sub": "Staying warm", "varme.title": "Heating &amp; wood stove",
+      "varme.li1": "<b>Heat pump:</b> the remote hangs on the wall next to the pump — please put it back in the same place. <span class=\"placeholder\">[Add link to heat pump manual]</span>",
+      "varme.li2": "<b>Wood stove:</b> pull the drawer out slightly or open the damper a little to let in extra air, then you can close it again. Firewood and firelighters are not included.",
+      "varme.li3": "<b>Important when using the wood stove:</b> please turn off the heat pump while the stove is lit — otherwise remember to activate the wood-stove function on the heat pump.",
+      "varme.note": "Never leave the fire unattended, and put it out completely before leaving the house or going to bed.",
+      "affald.sub": "Sorting", "affald.title": "Waste",
+      "affald.p1": "Waste is sorted into the bins by the house. See REFA's sorting guide for what goes where: " + dl(M.refaEn, "Sorting guide"),
+      "affald.p2": "<b>Nearest recycling centre:</b> Marielyst Genbrugsplads, Godthåbs Allé 1A, 4873 Væggerløse.",
+      "ude.sub": "Terrace &amp; garden", "ude.title": "Outdoors",
+      "ude.li1": "<b>Grill:</b> located on the side of the house. Remember to empty it when you're done.",
+      "ude.li2": "<b>Garden furniture:</b> feel free to move it, but put it back before you leave if it's windy.",
+      "ude.li3": "<b>Robot lawn mower \"Grassy\":</b> our robot mower only heads out after 11 AM on Saturdays and mows the lawn for each arrival. If it gets lost and can't find its way home, feel free to help it along — it doesn't bite :) Remember to press the big red STOP button. If it asks for a code, it's the same as the key box code. Thank you so much!",
+      "ude.hottub.h": "Hot tub",
+      "ude.hottub.intro": "The hot tub takes about 1 hour to fill with water. Here's how:",
+      "ude.hottub.s1": "<b>Fill with water:</b> use the yellow hose on the left side of the house (by the gate). When you turn on the tap, the hose expands and gets longer.",
+      "ude.hottub.s2": "<b>Turn off the water:</b> the tap doesn't need to be tightened hard. When switched off, it drains the remaining water so it stays frost-free.",
+      "ude.hottub.s3": "<b>Light the stove:</b> only once there's enough water in the tub and the high side ledge is covered. The stove's drain tap is at the bottom of the tub by the stove.",
+      "ude.hottub.s4": "<b>Heating up:</b> depending on the outdoor temperature, it takes 2-4 hours to heat the water to about 30 degrees. We don't recommend going above 40 degrees.",
+      "ude.hottub.s5": "<b>Draining:</b> use a submersible pump for faster draining. Use the hose on the Gardena reel next to the tub and run it to the shower in the bathroom. The last of the water can be drained onto the lawn when the pump can't take any more.",
+      "ude.hottub.note": "Remember: only light the stove once the water covers the high side ledge — otherwise the stove can be damaged.",
+      "regler.sub": "Good manners", "regler.title": "House rules",
+      "regler.li1": "Smoking is outdoors only.",
+      "regler.li2": "Quiet after 10 PM, out of respect for the neighbours.",
+      "regler.li3": "Pets are not allowed.",
+      "regler.li4": "Maximum guests: 8 people.",
+      "regler.note": "<b>Before you leave:</b> dishes done, bins emptied, furniture back in place, and the house locked.",
+      "regler.tip": "<b>Handy bedroom tip:</b> if you switch the ceiling light off and on within 3 seconds, it dims. There are 3 different dimming levels.",
+      "noed.sub": "Good to know", "noed.title": "In an emergency",
+      "noed.fact1": "Emergency services", "noed.fact2": "Out-of-hours doctor", "noed.fact3": "Nearest hospital",
+      "noed.fact3val": "Zealand University Hospital, Nykøbing F., Fjordvej 15 — approx. 20 min / 17 km",
+      "noed.p1": "The first-aid kit and a small fire extinguisher are in the tall cabinet in the kitchen.",
+      "noed.p2": "Check for power outages here: " + dl(M.cerius, "Cerius power outages"),
+      "omraadet.sub": "Within about an hour's drive", "omraadet.title": "Nearby attractions",
+      "omraadet.intro": "The house is just minutes from Marielyst, so you've got a long sandy beach and plenty of activities right on your doorstep. Here's a selection for the days you fancy venturing a bit further.",
+      "omraadet.h1": "Beach &amp; nature", "omraadet.h2": "Family &amp; entertainment", "omraadet.h3": "Towns &amp; day trips",
+      "omraadet.li1": "<b>Marielyst / Bøtø Beach</b> — one of Denmark's widest and most popular beaches, with fine sand and shallow water (5 min).",
+      "omraadet.li2": "<b>Marielyst Seebrücke</b> — a bathing jetty out into the sea, great for sunsets and wheelchair/pram access (5 min).",
+      "omraadet.li3": "<b>Bøtø Nature Park</b> — wilderness with free-roaming wild horses and cattle, great walking and cycling routes (10 min).",
+      "omraadet.li4": "<b>Bøtø Forest</b> — woodland with marked trails and free-roaming animals (10 min).",
+      "omraadet.li5": "<b>Golf &amp; Fun Park</b> — adventure golf, disc golf, segways and a playground, enough for a full day (10 min).",
+      "omraadet.li6": "<b>Family Fun Park Marielyst</b> — rides for families with children, right in the middle of Marielyst (10 min).",
+      "omraadet.li7": "<b>Marielyst Go-Kart &amp; Paintball Centre</b> — go-kart track and paintball (15 min).",
+      "omraadet.li8": "<b>Gedser Lighthouse &amp; Gedser Odde</b> — Denmark's southernmost point, with a lighthouse and views over the Baltic Sea (20-25 min).",
+      "omraadet.li9": "<b>Nykøbing Falster</b> — pedestrian street, cafés, restaurants and shopping (20-25 min).",
+      "omraadet.li10": "<b>Stouby Mølle</b> — a preserved post mill from 1790 with a glassblowing workshop and a view (15-20 min).",
+      "omraadet.li11": "<b>Danish Castle Centre, Vordingborg</b> — museum and castle ruin about the medieval Valdemar kings, with the Goose Tower (approx. 40-45 min).",
+      "omraadet.note": "If you have a bit more time one day, the chalk-white cliffs at <b>Møns Klint</b> are worth the trip — it's just outside an hour's drive (closer to 70 minutes).",
+      "kontakt.sub": "Questions?", "kontakt.title": "Contact the agency",
+      "kontakt.fact1": "Phone", "kontakt.fact2": "Email", "kontakt.fact3": "Web",
+      "kontakt.p": "Please contact Campaya if anything's not working during your stay — it'll be sorted out.",
+      "promo.title": "10% off your next stay",
+      "promo.text": "Thank you for booking our house! You get 10% off your next booking with this code:",
+      "promo.btn": "Book with discount",
+      "gaest.sub": "Share your experience", "gaest.title": "Guestbook",
+      "gaest.intro": "We'd love to hear how your stay was. Leave a note below — future guests can read along.",
+      "gaest.nameph": "Name (optional)",
+      "gaest.textph": "Write a comment about your stay…",
+      "gaest.submit": "Share your experience",
+      "gaest.wall": "Greetings from previous guests",
+      "footer.title": "Happy holidays at Beach House på Bøtøvej",
+      "footer.sub": "We hope you have a wonderful stay."
+    },
+    de: {
+      "nav.ankomst": "Ankunft", "nav.internet": "W-LAN &amp; Strom", "nav.koekken": "Küche",
+      "nav.varme": "Heizung &amp; Kamin", "nav.affald": "Müll", "nav.ude": "Draußen",
+      "nav.regler": "Hausregeln", "nav.noed": "Notfall", "nav.omraadet": "Ausflüge in der Nähe", "nav.kontakt": "Kontakt", "nav.gaestebog": "Gästebuch",
+      "hero.eyebrow": "Gästehandbuch",
+      "hero.title": "Willkommen im Beach House på Bøtøvej",
+      "hero.subtitle": "Hier findet ihr alles Praktische rund ums Haus – vom WLAN-Code bis zum Anzünden des Kaminofens. Wir wünschen einen schönen Aufenthalt.",
+      "hero.meta.address": "Adresse", "hero.meta.checkin": "Anreise", "hero.meta.checkout": "Abreise",
+      "ankomst.sub": "Erster Halt", "ankomst.title": "Ankunft &amp; Abreise",
+      "ankomst.p": "Der Schlüssel befindet sich in einer Schlüsselbox an der Haustür.",
+      "ankomst.fact1": "Code Schlüsselbox", "ankomst.fact1val": "Per E-Mail gesendet", "ankomst.fact2": "Anreise ab", "ankomst.fact3": "Abreise bis",
+      "ankomst.li1": "Legt den Schlüssel bei der Abreise zurück in die Schlüsselbox.",
+      "ankomst.li2": "Schaltet die Außenbeleuchtung aus und prüft, dass Fenster und Türen geschlossen sind.",
+      "ankomst.li3": "Seht euch vor der Abfahrt die Reinigungs-Checkliste unter <a href=\"#regler\">Hausregeln</a> an.",
+      "internet.sub": "Praktisches", "internet.title": "W-LAN &amp; Strom",
+      "internet.fact1": "WLAN-Name", "internet.fact2": "WLAN-Passwort", "internet.fact3": "Stromzähler", "internet.fact3val": "Digital ablesbar",
+      "internet.p": "Der Router steht im Wohnzimmer auf dem Regal. Bei Internetproblemen einfach 10 Sekunden den Stecker ziehen und neu starten. Der Stromzähler wird digital abgelesen und muss nicht manuell abgelesen werden.",
+      "koekken.sub": "Geräte", "koekken.title": "Küche",
+      "koekken.li1": "<b>Filterkaffeemaschine:</b> normaler Filterkaffee. " + dl(M.filter, "Anleitung"),
+      "koekken.li2": "<b>Kapselkaffeemaschine:</b> es gibt 2 Einsätze — einen für Nespresso-Kapseln und einen für Dolce Gusto. " + dl(M.capsule, "Anleitung"),
+      "koekken.li3": "<b>Spülmaschine:</b> benutzt die 90-Minuten-Taste für normales Spülen oder das Auto-Programm. " + dl(M.dish, "Anleitung"),
+      "koekken.li4": "<b>Backofen:</b> funktioniert wie ein normaler Ofen. " + dl(M.oven, "Anleitung"),
+      "koekken.li5": "<b>Kochfeld:</b> " + dl(M.hob, "Anleitung"),
+      "koekken.li6": "<b>Dampfglätter:</b> das Bügeleisen wurde aus Sicherheitsgründen durch einen Dampfglätter ersetzt. Er steht im Hochschrank in der Küche.",
+      "koekken.li7": "<b>Wasser:</b> Leitungswasser ist trinkbar.",
+      "koekken.note": "Weitere Anleitungen findet ihr im Hochschrank in der Küche. Bitte stellt das Geschirr wieder dahin zurück, wo ihr es gefunden habt — das erleichtert die Übergabe an die nächsten Gäste.",
+      "varme.sub": "Warm bleiben", "varme.title": "Heizung &amp; Kaminofen",
+      "varme.li1": "<b>Wärmepumpe:</b> die Fernbedienung hängt an der Wand neben der Pumpe — bitte legt sie wieder an denselben Platz zurück. <span class=\"placeholder\">[Link zur Wärmepumpen-Anleitung einfügen]</span>",
+      "varme.li2": "<b>Kaminofen:</b> zieht die Schublade etwas heraus oder öffnet die Klappe leicht, damit zusätzliche Luft hineinkommt. Danach könnt ihr sie wieder schließen. Brennholz und Anzünder sind nicht inklusive.",
+      "varme.li3": "<b>Wichtig bei Nutzung des Kaminofens:</b> schaltet die Wärmepumpe möglichst aus, während der Ofen brennt — andernfalls denkt daran, die Kaminofen-Funktion an der Wärmepumpe zu aktivieren.",
+      "varme.note": "Lasst das Feuer nie unbeaufsichtigt und löscht es vollständig, bevor ihr das Haus verlasst oder schlafen geht.",
+      "affald.sub": "Mülltrennung", "affald.title": "Müll",
+      "affald.p1": "Der Müll wird in den Tonnen beim Haus getrennt. In REFAs Sortieranleitung seht ihr, was wohin gehört: " + dl(M.refaDe, "Sortieranleitung"),
+      "affald.p2": "<b>Nächster Wertstoffhof:</b> Marielyst Genbrugsplads, Godthåbs Allé 1A, 4873 Væggerløse.",
+      "ude.sub": "Terrasse &amp; Garten", "ude.title": "Draußen",
+      "ude.li1": "<b>Grill:</b> steht an der Seite des Hauses. Bitte leert ihn, wenn ihr fertig seid.",
+      "ude.li2": "<b>Gartenmöbel:</b> dürfen gerne umgestellt werden, bitte bei Abreise oder starkem Wind zurückstellen.",
+      "ude.li3": "<b>Mähroboter \"Grassy\":</b> unser Mähroboter fährt samstags erst nach 11 Uhr los und mäht den Rasen zu jeder Anreise. Sollte er sich verirren und nicht nach Hause finden, helft ihm gerne — er beißt nicht :) Denkt daran, den großen roten STOP-Knopf zu drücken. Fragt er nach einem Code, ist es derselbe wie für die Schlüsselbox. Vielen Dank im Voraus!",
+      "ude.hottub.h": "Hot Tub / Badezuber",
+      "ude.hottub.intro": "Der Badezuber braucht ca. 1 Stunde zum Befüllen. So geht's:",
+      "ude.hottub.s1": "<b>Mit Wasser füllen:</b> benutzt den gelben Schlauch an der linken Hausseite (beim Tor). Wenn der Hahn aufgedreht wird, dehnt sich der Schlauch und wird länger.",
+      "ude.hottub.s2": "<b>Wasser abstellen:</b> der Hahn muss nicht fest zugedreht werden. Beim Abstellen läuft das restliche Wasser heraus, damit er frostfrei bleibt.",
+      "ude.hottub.s3": "<b>Ofen anzünden:</b> erst wenn genug Wasser im Zuber ist und die hohe Seitenbank mit Wasser bedeckt ist. Der Ablasshahn des Ofens befindet sich am Boden des Zubers beim Ofen.",
+      "ude.hottub.s4": "<b>Aufheizen:</b> je nach Außentemperatur dauert es 2-4 Stunden, das Wasser auf ca. 30 Grad zu erwärmen. Wir empfehlen nicht über 40 Grad.",
+      "ude.hottub.s5": "<b>Entleeren:</b> benutzt eine Tauchpumpe für schnelleres Entleeren. Nehmt den Schlauch auf dem Gardena-Wagen neben dem Zuber und führt ihn zur Dusche im Badezimmer. Das letzte Wasser kann auf den Rasen abgelassen werden, wenn die Pumpe nicht mehr fördert.",
+      "ude.hottub.note": "Denkt daran: zündet den Ofen erst an, wenn das Wasser die hohe Seitenbank bedeckt — sonst kann der Ofen beschädigt werden.",
+      "regler.sub": "Guter Ton", "regler.title": "Hausregeln",
+      "regler.li1": "Rauchen bitte nur draußen.",
+      "regler.li2": "Ruhe ab 22 Uhr aus Rücksicht auf die Nachbarn.",
+      "regler.li3": "Haustiere sind nicht erlaubt.",
+      "regler.li4": "Maximale Gästezahl: 8 Personen.",
+      "regler.note": "<b>Vor der Abreise:</b> Geschirr gespült, Mülltonnen geleert, Möbel zurückgestellt und Haus abgeschlossen.",
+      "regler.tip": "<b>Praktischer Tipp fürs Schlafzimmer:</b> wenn ihr die Deckenlampe innerhalb von 3 Sekunden aus- und wieder einschaltet, wird das Licht gedimmt. Es gibt 3 verschiedene Dimmstufen.",
+      "noed.sub": "Gut zu wissen", "noed.title": "Im Notfall",
+      "noed.fact1": "Notruf", "noed.fact2": "Ärztlicher Bereitschaftsdienst", "noed.fact3": "Nächstes Krankenhaus",
+      "noed.fact3val": "Universitätskrankenhaus Seeland, Nykøbing F., Fjordvej 15 — ca. 20 Min. / 17 km",
+      "noed.p1": "Der Erste-Hilfe-Kasten und ein kleiner Feuerlöscher befinden sich im Hochschrank in der Küche.",
+      "noed.p2": "Prüft Stromausfälle hier: " + dl(M.cerius, "Cerius Stromausfälle"),
+      "omraadet.sub": "Innerhalb von ca. 1 Autostunde", "omraadet.title": "Ausflüge in der Nähe",
+      "omraadet.intro": "Das Haus liegt nur wenige Minuten von Marielyst entfernt, mit langem Sandstrand und vielen Aktivitäten direkt vor der Tür. Hier eine Auswahl für Tage, an denen es etwas weiter hinausgehen soll.",
+      "omraadet.h1": "Strand &amp; Natur", "omraadet.h2": "Familie &amp; Unterhaltung", "omraadet.h3": "Städte &amp; Ausflüge",
+      "omraadet.li1": "<b>Marielyst / Bøtø Strand</b> — einer der breitesten und beliebtesten Strände Dänemarks, mit feinem Sand und flachem Wasser (5 Min.).",
+      "omraadet.li2": "<b>Marielyst Seebrücke</b> — ein Badesteg ins Meer, ideal für den Sonnenuntergang und barrierefrei zugänglich (5 Min.).",
+      "omraadet.li3": "<b>Bøtø Naturpark</b> — Wildnis mit frei lebenden Wildpferden und Rindern, schöne Wander- und Radwege (10 Min.).",
+      "omraadet.li4": "<b>Bøtøskoven</b> — Wald mit markierten Wegen und frei umherstreifenden Tieren (10 Min.).",
+      "omraadet.li5": "<b>Golf &amp; Fun Park</b> — Adventure-Golf, Discgolf, Segway und Spielplatz, genug für einen ganzen Tag (10 Min.).",
+      "omraadet.li6": "<b>Family Fun Park Marielyst</b> — Fahrgeschäfte für Familien, mitten in Marielyst (10 Min.).",
+      "omraadet.li7": "<b>Marielyst Gokart &amp; Paintball Center</b> — Gokart-Bahn und Paintball (15 Min.).",
+      "omraadet.li8": "<b>Gedser Fyr &amp; Gedser Odde</b> — der südlichste Punkt Dänemarks mit Leuchtturm und Blick über die Ostsee (20-25 Min.).",
+      "omraadet.li9": "<b>Nykøbing Falster</b> — Fußgängerzone, Cafés, Restaurants und Einkaufsmöglichkeiten (20-25 Min.).",
+      "omraadet.li10": "<b>Stouby Mølle</b> — erhaltene Bockwindmühle von 1790 mit Glasbläserei und Aussicht (15-20 Min.).",
+      "omraadet.li11": "<b>Danmarks Borgcenter, Vordingborg</b> — Museum und Burgruine zur mittelalterlichen Zeit der Waldemare, mit dem Gänseturm (ca. 40-45 Min.).",
+      "omraadet.note": "Wenn ihr an einem Tag etwas mehr Zeit habt, lohnt sich ein Ausflug zu den kreideweißen Kliffs von <b>Møns Klint</b> — das liegt allerdings knapp außerhalb einer Autostunde (eher 70 Minuten).",
+      "kontakt.sub": "Fragen?", "kontakt.title": "Kontakt zur Agentur",
+      "kontakt.fact1": "Telefon", "kontakt.fact2": "E-Mail", "kontakt.fact3": "Web",
+      "kontakt.p": "Meldet euch bei Campaya, wenn während eures Aufenthalts etwas nicht funktioniert — es wird gelöst.",
+      "promo.title": "10% auf euren nächsten Aufenthalt",
+      "promo.text": "Danke, dass ihr unser Haus gebucht habt! Ihr erhaltet 10% Rabatt auf die nächste Buchung mit diesem Code:",
+      "promo.btn": "Mit Rabatt buchen",
+      "gaest.sub": "Teilt eure Erfahrung", "gaest.title": "Gästebuch",
+      "gaest.intro": "Wir würden gerne hören, wie euer Aufenthalt war. Hinterlasst unten einen Gruß — künftige Gäste können mitlesen.",
+      "gaest.nameph": "Name (optional)",
+      "gaest.textph": "Schreibt einen Kommentar zu eurem Aufenthalt…",
+      "gaest.submit": "Erfahrung teilen",
+      "gaest.wall": "Grüße von früheren Gästen",
+      "footer.title": "Schöne Ferien im Beach House på Bøtøvej",
+      "footer.sub": "Wir wünschen euch einen wunderbaren Aufenthalt."
+    }
+  };
+
+  const originals = new Map();
+  document.querySelectorAll('[data-i18n]').forEach(el => originals.set(el, el.innerHTML));
+  const originalPh = new Map();
+  document.querySelectorAll('[data-i18n-ph]').forEach(el => originalPh.set(el, el.getAttribute('placeholder')));
+
+  let currentLang = 'da';
+
+  function applyLang(lang){
+    currentLang = lang;
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.getAttribute('data-i18n');
+      if (lang === 'da') {
+        el.innerHTML = originals.get(el);
+      } else if (translations[lang] && translations[lang][key] !== undefined) {
+        el.innerHTML = translations[lang][key];
+      }
+    });
+    document.querySelectorAll('[data-i18n-ph]').forEach(el => {
+      const key = el.getAttribute('data-i18n-ph');
+      if (lang === 'da') {
+        el.setAttribute('placeholder', originalPh.get(el));
+      } else if (translations[lang] && translations[lang][key] !== undefined) {
+        el.setAttribute('placeholder', translations[lang][key]);
+      }
+    });
+    document.querySelectorAll('.langswitch button').forEach(b => {
+      b.classList.toggle('active', b.dataset.lang === lang);
+    });
+    document.documentElement.setAttribute('lang', lang);
+    renderGuestbook();
+  }
+
+  document.querySelectorAll('.langswitch button').forEach(b => {
+    b.addEventListener('click', () => applyLang(b.dataset.lang));
+  });
+
+  /* ---------------- GUESTBOOK ----------------
+     PUBLIC guestbook shared across all guests + PRIVATE (1-3 star) feedback
+     emailed to the host.
+
+     >>> SETUP (one-time, free, ~5 min): <<<
+     1. Create a Google Sheet, then Extensions ▸ Apps Script.
+     2. Paste the Apps Script code you were given, set NOTIFY_EMAIL to your address.
+     3. Deploy ▸ New deployment ▸ Web app ▸ Execute as: Me ▸ Who has access: Anyone.
+     4. Copy the Web app URL and paste it between the quotes below.
+
+     Once GUESTBOOK_API is set:
+       • 4-5 star reviews are stored and shown publicly to every guest.
+       • 1-3 star reviews are stored privately and emailed to you (never shown).
+     If GUESTBOOK_API is left empty, the page still works locally for demoing
+     (public reviews live only in the current browser session; low ratings open
+     a mailto to OWNER_EMAIL). */
+  const GUESTBOOK_API = "https://script.google.com/macros/s/AKfycbzQ8wv9sFb7iDvdWb82RCz6fHp41YLV_djQWw9Wbs9U3hACaqHBtuOn3dA5u_UjvbUc/exec";                       // ← paste your Google Apps Script Web App URL here
+  const OWNER_EMAIL   = "DIN-EMAIL@EKSEMPEL.DK";  // ← fallback email if no backend is configured
+
+  let guestbook = [];
+
+  const GB = {
+    da: {
+      needText: "Skriv gerne en kommentar først.",
+      needStars: "Vælg venligst et antal stjerner.",
+      sending: "Sender …",
+      thanksPublic: "Tusind tak! Din hilsen er nu i gæstebogen. 🌊",
+      thanksPrivate: "Tak for din feedback — den er sendt privat til værten.",
+      thanksPrivateMail: "Tak for din feedback — din mailklient åbner nu, så du kan sende den privat til værten.",
+      error: "Beklager, noget gik galt. Prøv venligst igen senere.",
+      empty: "Ingen hilsener endnu — bliv den første til at skrive i gæstebogen!",
+      anon: "Gæst",
+      subject: "Feedback fra ophold – Beach House på Bøtøvej"
+    },
+    en: {
+      needText: "Please write a comment first.",
+      needStars: "Please choose a star rating.",
+      sending: "Sending …",
+      thanksPublic: "Thank you so much! Your greeting is now in the guestbook. 🌊",
+      thanksPrivate: "Thanks for your feedback — it's been sent privately to the host.",
+      thanksPrivateMail: "Thanks for your feedback — your email app will open so you can send it privately to the host.",
+      error: "Sorry, something went wrong. Please try again later.",
+      empty: "No greetings yet — be the first to write in the guestbook!",
+      anon: "Guest",
+      subject: "Feedback from stay – Beach House på Bøtøvej"
+    },
+    de: {
+      needText: "Bitte schreibt zuerst einen Kommentar.",
+      needStars: "Bitte wählt eine Sternebewertung.",
+      sending: "Senden …",
+      thanksPublic: "Vielen Dank! Euer Gruß steht jetzt im Gästebuch. 🌊",
+      thanksPrivate: "Danke für euer Feedback — es wurde privat an den Gastgeber gesendet.",
+      thanksPrivateMail: "Danke für euer Feedback — euer E-Mail-Programm öffnet sich, damit ihr es privat an den Gastgeber senden könnt.",
+      error: "Entschuldigung, etwas ist schiefgelaufen. Bitte versucht es später erneut.",
+      empty: "Noch keine Grüße — seid die Ersten im Gästebuch!",
+      anon: "Gast",
+      subject: "Feedback vom Aufenthalt – Beach House på Bøtøvej"
+    }
+  };
+
+  let selectedRating = 0;
+  const starBtns = document.querySelectorAll('#gbStars button');
+  function paintStars(n){ starBtns.forEach(b => b.classList.toggle('on', Number(b.dataset.val) <= n)); }
+  starBtns.forEach(b => {
+    b.addEventListener('click', () => { selectedRating = Number(b.dataset.val); paintStars(selectedRating); });
+    b.addEventListener('mouseenter', () => paintStars(Number(b.dataset.val)));
+  });
+  document.getElementById('gbStars').addEventListener('mouseleave', () => paintStars(selectedRating));
+
+  function escapeHtml(s){
+    return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  }
+
+  function renderGuestbook(){
+    const list = document.getElementById('gbList');
+    if (!list) return;
+    const t = GB[currentLang] || GB.da;
+    if (guestbook.length === 0){
+      list.innerHTML = '<p class="gb-empty">' + t.empty + '</p>';
+      return;
+    }
+    list.innerHTML = guestbook.map(e => {
+      const r = Math.max(0, Math.min(5, Number(e.rating) || 0));
+      const stars = '★'.repeat(r) + '☆'.repeat(5 - r);
+      const who = e.name ? escapeHtml(e.name) : t.anon;
+      return '<div class="gb-entry"><div class="gb-head"><span class="gb-who">' + who +
+             '</span><span class="gb-when">' + escapeHtml(e.date || '') + '</span></div>' +
+             '<div class="gb-rating">' + stars + '</div><p>' + escapeHtml(e.text) + '</p></div>';
+    }).join('');
+  }
+
+  async function loadEntries(){
+    if (!GUESTBOOK_API) return;             // no backend configured → keep local
+    try{
+      const r = await fetch(GUESTBOOK_API);
+      const data = await r.json();
+      guestbook = Array.isArray(data) ? data : (data.entries || []);
+      renderGuestbook();
+    }catch(err){ /* keep whatever we have */ }
+  }
+
+  document.getElementById('gbSubmit').addEventListener('click', async () => {
+    const t = GB[currentLang] || GB.da;
+    const name = document.getElementById('gbName').value.trim();
+    const text = document.getElementById('gbText').value.trim();
+    const msg = document.getElementById('gbMsg');
+    if (!text){ msg.textContent = t.needText; return; }
+    if (!selectedRating){ msg.textContent = t.needStars; return; }
+
+    const dateStr = new Date().toLocaleDateString(
+      currentLang === 'da' ? 'da-DK' : currentLang === 'de' ? 'de-DE' : 'en-GB',
+      { year:'numeric', month:'short', day:'numeric' });
+    const entry = { name, text, rating: selectedRating, lang: currentLang, date: dateStr };
+
+    if (GUESTBOOK_API){
+      // backend stores everything; only 4-5 star come back on load, 1-3 star email the host
+      msg.textContent = t.sending;
+      try{
+        await fetch(GUESTBOOK_API, {
+          method: 'POST',
+          headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+          body: JSON.stringify(entry)
+        });
+        if (selectedRating >= 4){ await loadEntries(); msg.textContent = t.thanksPublic; }
+        else { msg.textContent = t.thanksPrivate; }
+      }catch(err){ msg.textContent = t.error; return; }
+    } else {
+      // local fallback (no backend yet)
+      if (selectedRating >= 4){
+        guestbook.unshift(entry);
+        renderGuestbook();
+        msg.textContent = t.thanksPublic;
+      } else {
+        const body = 'Rating: ' + selectedRating + '/5\n' + (name ? ('Navn: ' + name + '\n') : '') + '\n' + text;
+        window.location.href = 'mailto:' + OWNER_EMAIL + '?subject=' + encodeURIComponent(t.subject) + '&body=' + encodeURIComponent(body);
+        msg.textContent = t.thanksPrivateMail;
+      }
+    }
+
+    document.getElementById('gbName').value = '';
+    document.getElementById('gbText').value = '';
+    selectedRating = 0; paintStars(0);
+  });
+
+  loadEntries();
+  applyLang('da');
+</script>
+
+</body>
+</html>

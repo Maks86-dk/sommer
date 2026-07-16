@@ -463,6 +463,132 @@
   .gb-entry p{ margin: 0.2rem 0 0; font-size: 0.95rem; color: var(--ink-soft); }
   .gb-empty{ color: var(--ink-soft); font-size: 0.92rem; font-style: italic; }
 
+  /* ---- animated diagrams ---- */
+  .anim{
+    display: flex;
+    align-items: center;
+    gap: 1.1rem;
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 1rem 1.1rem;
+    margin: 0.9rem 0 0.2rem;
+    flex-wrap: wrap;
+  }
+  .anim svg{ flex: none; }
+  .anim .anim-cap{ font-size: 0.9rem; color: var(--ink-soft); min-width: 12ch; flex: 1 1 12ch; }
+  .anim .anim-cap b{ color: var(--sea-deep); }
+
+  /* sauna timer dial */
+  @keyframes saunaSweep{
+    0%   { transform: rotate(0deg); }
+    45%  { transform: rotate(120deg); }
+    55%  { transform: rotate(120deg); }
+    100% { transform: rotate(0deg); }
+  }
+  @keyframes heatPulse{
+    0%, 40% { opacity: 0; transform: translateY(2px); }
+    60%, 100% { opacity: 1; transform: translateY(-2px); }
+  }
+  .sauna-pointer{ transform-origin: 60px 60px; animation: saunaSweep 5s ease-in-out infinite; }
+  .heatline{ animation: heatPulse 5s ease-in-out infinite; transform-origin: center; }
+  .heatline.h2{ animation-delay: 0.3s; }
+  .heatline.h3{ animation-delay: 0.6s; }
+
+  /* spa tap */
+  @keyframes tapHandle{
+    0%, 45%   { transform: rotate(28deg); }
+    55%, 100% { transform: rotate(-28deg); }
+  }
+  @keyframes tapDrop{
+    0%      { opacity: 0; transform: translateY(0); }
+    10%     { opacity: 1; }
+    45%     { opacity: 1; transform: translateY(24px); }
+    46%,100%{ opacity: 0; transform: translateY(0); }
+  }
+  .tap-handle{ transform-origin: 46px 34px; animation: tapHandle 3s ease-in-out infinite; }
+  .tap-drop{ animation: tapDrop 3s linear infinite; }
+  .tap-drop.d2{ animation-delay: 0.9s; }
+  .tap-drop.d3{ animation-delay: 1.8s; }
+
+  /* toaster dial */
+  @keyframes toastDial{
+    0%   { transform: rotate(0deg); }
+    30%  { transform: rotate(300deg); }
+    45%  { transform: rotate(300deg); }
+    70%  { transform: rotate(0deg); }
+    80%  { transform: rotate(140deg); }
+    100% { transform: rotate(140deg); }
+  }
+  .toast-dial{ transform-origin: 45px 45px; animation: toastDial 4.5s ease-in-out infinite; }
+
+  /* lamp dimmer */
+  @keyframes lampDim{
+    0%, 12%   { opacity: 1; }
+    16%, 20%  { opacity: 0.05; }
+    24%       { opacity: 1; }
+    45%       { opacity: 0.65; }
+    70%       { opacity: 0.32; }
+    92%,100%  { opacity: 0.12; }
+  }
+  .lamp-glow{ transform-origin: center; animation: lampDim 5s ease-in-out infinite; }
+
+  /* hot tub sequence */
+  @keyframes tubFill{
+    0%   { transform: scaleY(0); }
+    33%, 100% { transform: scaleY(1); }
+  }
+  @keyframes tubFlame{
+    0%, 33%  { opacity: 0; transform: scaleY(0.4); }
+    50%, 100%{ opacity: 1; transform: scaleY(1); }
+  }
+  @keyframes tubSteam{
+    0%, 60%  { opacity: 0; transform: translateY(4px); }
+    80%      { opacity: 0.8; }
+    100%     { opacity: 0; transform: translateY(-8px); }
+  }
+  .tub-water{ transform-origin: bottom; animation: tubFill 5s ease-in-out infinite; }
+  .tub-flame{ transform-origin: bottom center; animation: tubFlame 5s ease-in-out infinite; }
+  .tub-steam{ animation: tubSteam 5s ease-in-out infinite; }
+  .tub-steam.s2{ animation-delay: 0.5s; }
+  .tub-steam.s3{ animation-delay: 1s; }
+
+  /* waste sorting grid */
+  .sortgrid{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 0.6rem;
+    margin-top: 1rem;
+  }
+  .frac{
+    display: flex;
+    align-items: flex-start;
+    gap: 0.6rem;
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-left: 5px solid var(--fc, var(--sea));
+    border-radius: 10px;
+    padding: 0.65rem 0.75rem;
+  }
+  .frac-ic{ flex: none; width: 30px; height: 30px; border-radius: 7px; background: var(--fc, var(--sea)); display: flex; align-items: center; justify-content: center; }
+  .frac-ic svg{ width: 18px; height: 18px; stroke: #fff; fill: none; stroke-width: 1.8; }
+  .frac-t b{ display: block; color: var(--sea-deep); font-size: 0.9rem; }
+  .frac-t span{ font-size: 0.78rem; color: var(--ink-soft); line-height: 1.35; }
+
+  @media (prefers-reduced-motion: reduce){
+    .sauna-pointer, .heatline, .tap-handle, .tap-drop,
+    .toast-dial, .lamp-glow, .tub-water, .tub-flame, .tub-steam{ animation: none !important; }
+    .heatline{ opacity: 1; }
+    .tub-water{ transform: scaleY(1); }
+    .tub-flame{ opacity: 1; }
+  }
+
+  @media print{
+    .sauna-pointer, .heatline, .tap-handle, .tap-drop,
+    .toast-dial, .lamp-glow, .tub-water, .tub-flame, .tub-steam{ animation: none !important; }
+    .tub-water{ transform: scaleY(1); }
+  }
+
   @media print{
     .roomnav{ display:none; }
     .hero{ background: var(--sea) !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
@@ -574,6 +700,21 @@
       <li data-i18n="koekken.li7"><b>Vandet:</b> Postevand kan drikkes.</li>
     </ul>
     <div class="note" data-i18n="koekken.note">Flere vejledninger findes i højskabet i køkkenet. Sæt gerne service tilbage i skabene, som I fandt dem — det gør overleveringen nemmere for næste gæst.</div>
+
+    <div class="anim">
+      <svg width="90" height="90" viewBox="0 0 90 90" role="img" aria-label="Brødrister-timer">
+        <circle cx="45" cy="45" r="34" fill="#fff" stroke="var(--line)" stroke-width="2"/>
+        <g stroke="var(--driftwood)" stroke-width="2" stroke-linecap="round">
+          <line x1="45" y1="14" x2="45" y2="19"/>
+          <line x1="76" y1="45" x2="71" y2="45"/>
+          <line x1="45" y1="76" x2="45" y2="71"/>
+          <line x1="14" y1="45" x2="19" y2="45"/>
+        </g>
+        <g class="toast-dial"><polygon points="45,45 41,20 45,16 49,20" fill="var(--coral)"/></g>
+        <circle cx="45" cy="45" r="5" fill="var(--sea-deep)"/>
+      </svg>
+      <div class="anim-cap" data-i18n="koekken.anim"><b>Brødrister:</b> Drej timeren helt over, tilbage — og sæt så tiden.</div>
+    </div>
   </section>
 
   <section class="room" id="varme">
@@ -602,6 +743,16 @@
     </div>
     <p data-i18n="affald.p1">Affald sorteres i spandene ved huset. Se REFA's sorteringsvejledning for, hvad der skal hvorhen: <a class="doclink" href="https://www.refa.dk/wp-content/uploads/2026/06/Sortering-dansk-1.pdf" target="_blank" rel="noopener">Sorteringsvejledning<svg viewBox="0 0 24 24"><path d="M14 3h7v7"/><path d="M10 14 21 3"/><path d="M21 14v5a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5"/></svg></a></p>
     <p data-i18n="affald.p2" style="margin-top:0.8rem;"><b>Nærmeste genbrugsplads:</b> Marielyst Genbrugsplads, Godthåbs Allé 1A, 4873 Væggerløse.</p>
+
+    <h3 style="font-size:1rem; margin-top:1.6rem; margin-bottom:0.2rem; color: var(--sea-light); text-transform:uppercase; letter-spacing:0.06em;" data-i18n="affald.sorth">Sådan sorterer I (REFA)</h3>
+    <div class="sortgrid">
+      <div class="frac" style="--fc:#3F9B4F"><div class="frac-ic"><svg viewBox="0 0 24 24"><path d="M12 8c-3-3-8 0-6 6 1 4 4 7 6 7s5-3 6-7c2-6-3-9-6-6z"/><path d="M12 8V4"/></svg></div><div class="frac-t" data-i18n="frac.mad"><b>Madaffald</b><span>For sig selv. Brug de grønne poser (i højskabet i køkkenet) og luk med knude. Skræller, madrester, kaffegrums, æggeskaller.</span></div></div>
+      <div class="frac" style="--fc:#55565A"><div class="frac-ic"><svg viewBox="0 0 24 24"><path d="M4 7h16M6 7l1 13h10l1-13M9 7V4h6v3"/></svg></div><div class="frac-t" data-i18n="frac.rest"><b>Restaffald</b><span>For sig selv. Bleer, snavset emballage, chipsposer, pizzabakker.</span></div></div>
+      <div class="frac" style="--fc:#B0813C"><div class="frac-ic"><svg viewBox="0 0 24 24"><path d="M10 3h4v4l2 3v11H8V10l2-3z"/></svg></div><div class="frac-t" data-i18n="frac.metalglas"><b>Metal &amp; glas</b><span>Sammen. Dåser, alubakker, låg, flasker og konservesglas. Tømt.</span></div></div>
+      <div class="frac" style="--fc:#2F6DB0"><div class="frac-ic"><svg viewBox="0 0 24 24"><path d="M6 3h9l3 3v15H6z"/><path d="M9 9h6M9 13h6M9 17h4"/></svg></div><div class="frac-t" data-i18n="frac.pappapir"><b>Pap &amp; papir</b><span>Sammen. Aviser, reklamer, breve, æsker, bølgepap, æggebakker. Rent og tørt.</span></div></div>
+      <div class="frac" style="--fc:#C85C43"><div class="frac-ic"><svg viewBox="0 0 24 24"><path d="M8 8V6l4-2 4 2v2M8 8h8v13H8z"/></svg></div><div class="frac-t" data-i18n="frac.plastkart"><b>Plastik &amp; kartoner</b><span>Sammen. Folie, poser, bakker og bøtter samt mælke-, juice- og yoghurtkartoner.</span></div></div>
+      <div class="frac" style="--fc:#7E6BA6"><div class="frac-ic"><svg viewBox="0 0 24 24"><path d="M12 4l9 16H3z"/><path d="M12 10v4M12 17v.5"/></svg></div><div class="frac-t" data-i18n="frac.tekstilfarlig"><b>Tekstil &amp; farligt affald</b><span>Afleveres på genbrugspladsen. Slidt tøj og tekstil samt maling, batterier, spraydåser, kemikalier og elpærer.</span></div></div>
+    </div>
   </section>
 
   <section class="room" id="ude">
@@ -633,6 +784,21 @@
     <div class="note" data-i18n="ude.hottub.note">Husk: tænd først op i ovnen, når vandet dækker den høje siddeplads — ellers kan ovnen tage skade.</div>
     <div class="note" data-i18n="ude.hottub.care"><b>Ved brug over flere dage (vandpleje):</b> Tjek PH-værdien med teststrips — den skal være mellem 7 og 7,4. Er den for høj, tilsæt PH-minus (se emballagen for dosering). Er den for lav, tilføj mere vand. Når PH er OK, tilsæt 1 Combitab til chokbehandling og løbende desinfektion (1 hver 3. dag). Det er en klorfri desinfektion, som er mere skånsom for huden. Alt findes i udeskuret på hylden.</div>
     <div class="note" data-i18n="ude.hottub.tip"><b>Tip:</b> Tag et hurtigt brusebad inden, og skyl tæerne, hvis du har gået på græs eller jord — så det ikke kommer op i karret.</div>
+
+    <div class="anim">
+      <svg width="120" height="96" viewBox="0 0 120 96" role="img" aria-label="Vildmarksbad">
+        <g fill="none" stroke="var(--sea-light)" stroke-width="2.4" stroke-linecap="round">
+          <path class="tub-steam" d="M44 34 q4 -6 0 -12"/>
+          <path class="tub-steam s2" d="M60 34 q4 -6 0 -12"/>
+          <path class="tub-steam s3" d="M76 34 q4 -6 0 -12"/>
+        </g>
+        <path d="M28 44 h64 v22 a10 10 0 0 1 -10 10 h-44 a10 10 0 0 1 -10 -10 z" fill="#fff" stroke="var(--driftwood)" stroke-width="2.5"/>
+        <clipPath id="tubclip"><path d="M30 46 h60 v20 a9 9 0 0 1 -9 9 h-42 a9 9 0 0 1 -9 -9 z"/></clipPath>
+        <g clip-path="url(#tubclip)"><rect class="tub-water" x="30" y="46" width="60" height="30" fill="var(--sky)"/></g>
+        <g class="tub-flame"><path d="M60 92 q-8 -8 -3 -16 q1 4 4 5 q-3 -8 2 -13 q3 9 6 11 q3 4 -1 13 z" fill="var(--coral)"/></g>
+      </svg>
+      <div class="anim-cap" data-i18n="ude.hottub.anim"><b>Fyld</b> → <b>varm op</b> → <b>nyd.</b></div>
+    </div>
   </section>
 
   <section class="room" id="sauna">
@@ -653,6 +819,24 @@
     </ul>
     <div class="note" data-i18n="sauna.note">Hæld aldrig mere end ca. ½ deciliter vand på saunaovnen ad gangen — mere vand kan få ovnen til at slå fra.</div>
 
+    <div class="anim">
+      <svg width="120" height="120" viewBox="0 0 120 120" role="img" aria-label="Sauna-ur">
+        <g stroke="var(--coral)" stroke-width="2.6" fill="none" stroke-linecap="round">
+          <path class="heatline h1" d="M48 13 q3.5 -4 0 -9"/>
+          <path class="heatline h2" d="M60 13 q3.5 -4 0 -9"/>
+          <path class="heatline h3" d="M72 13 q3.5 -4 0 -9"/>
+        </g>
+        <path d="M60,16 A44,44 0 0 1 98.1,82" fill="none" stroke="#5FA463" stroke-width="7" stroke-linecap="round"/>
+        <path d="M98.1,82 A44,44 0 1 1 60,16" fill="none" stroke="#D26A54" stroke-width="7" stroke-linecap="round"/>
+        <circle cx="60" cy="60" r="33" fill="#fff" stroke="var(--line)"/>
+        <text x="82" y="44" font-size="9" fill="#5FA463" font-weight="700">0-4</text>
+        <text x="30" y="80" font-size="9" fill="#D26A54" font-weight="700">5-8</text>
+        <g class="sauna-pointer"><polygon points="60,60 56,30 60,25 64,30" fill="var(--sea-deep)"/></g>
+        <circle cx="60" cy="60" r="4.5" fill="var(--sea-deep)"/>
+      </svg>
+      <div class="anim-cap" data-i18n="sauna.anim1"><b>Grøn (0-4):</b> saunaen varmer med det samme. <b>Rød (over 4):</b> udskudt start.</div>
+    </div>
+
     <h3 style="font-size:1rem; margin-top:1.6rem; margin-bottom:0.4rem; color: var(--sea-light); text-transform:uppercase; letter-spacing:0.06em;" data-i18n="sauna.h2">Spabad (boblebad)</h3>
     <ul>
       <li data-i18n="sauna.li4"><b>Fyld op:</b> Fyld med vand til 5-10 cm over dyserne. Koldt vand er fint — vandmassagen varmer det op på ca. 1-4 timer, og der er stadig varmt vand i beholderen til brusebad bagefter.</li>
@@ -662,6 +846,22 @@
       <li data-i18n="sauna.li8"><b>Lys:</b> Tændes på touch-tasten nederst til venstre.</li>
       <li data-i18n="sauna.li9"><b>Sluk massage:</b> Tryk på den samme tast igen.</li>
     </ul>
+
+    <div class="anim">
+      <svg width="110" height="96" viewBox="0 0 110 96" role="img" aria-label="Spa-vandhane">
+        <rect x="42" y="30" width="12" height="42" rx="3" fill="var(--sea-light)"/>
+        <path d="M48 34 h28 v14" fill="none" stroke="var(--sea-light)" stroke-width="9" stroke-linecap="round"/>
+        <rect x="36" y="70" width="24" height="6" rx="3" fill="var(--driftwood)"/>
+        <g class="tap-handle"><rect x="20" y="30.5" width="28" height="7" rx="3.5" fill="var(--sea-deep)"/></g>
+        <circle cx="48" cy="34" r="5" fill="var(--sea-deep)"/>
+        <g fill="var(--sky)">
+          <ellipse class="tap-drop d1" cx="76" cy="54" rx="3" ry="4"/>
+          <ellipse class="tap-drop d2" cx="76" cy="54" rx="3" ry="4"/>
+          <ellipse class="tap-drop d3" cx="76" cy="54" rx="3" ry="4"/>
+        </g>
+      </svg>
+      <div class="anim-cap" data-i18n="sauna.anim2"><b>Omvendt hane:</b> ned = tænd for vandet, op = sluk.</div>
+    </div>
   </section>
 
   <section class="room" id="regler">
@@ -681,6 +881,18 @@
     <div class="note" data-i18n="regler.note"><b>Ved afrejse:</b> Opvask færdig, affald tømt, møbler stillet på plads, og huset låst.</div>
     <div class="note" data-i18n="regler.tip"><b>Godt tip til soveværelserne:</b> Tænder og slukker man loftlampen inden for 3 sekunder, dæmpes lyset. Det kan dæmpes i 3 forskellige niveauer.</div>
     <div class="note" data-i18n="regler.tip2"><b>Godt tip til stuen:</b> Drejekontakten i stuen styrer lyset ved gardinerne. Tryk på knappen for at tænde og slukke, og drej på den for at dæmpe lyset op og ned. Når den er slukket, er der stadig et svagt nattelys.</div>
+
+    <div class="anim">
+      <svg width="80" height="96" viewBox="0 0 80 96" role="img" aria-label="Dæmpbar lampe">
+        <circle class="lamp-glow" cx="40" cy="40" r="30" fill="var(--sky)" opacity="0.9"/>
+        <path d="M26 34 a14 14 0 0 1 28 0 c0 8 -6 11 -7 16 h-14 c-1 -5 -7 -8 -7 -16 z" fill="#F6E27A" stroke="var(--driftwood)" stroke-width="2"/>
+        <rect x="34" y="50" width="12" height="6" rx="1.5" fill="var(--driftwood)"/>
+        <rect x="36" y="56" width="8" height="12" rx="2" fill="var(--ink-soft)"/>
+        <line x1="40" y1="72" x2="40" y2="82" stroke="var(--driftwood)" stroke-width="2.4" stroke-linecap="round"/>
+      </svg>
+      <div class="anim-cap" data-i18n="regler.anim"><b>Loftlampe:</b> Tænd/sluk inden for 3 sek. dæmper — 3 niveauer, og et svagt nattelys, når den er slukket.</div>
+    </div>
+
     <div class="note" data-i18n="regler.family"><b>For børnefamilier:</b> Børneseng samt spil og brætspil finder I i kommoden. Børnestolen står i udeskuret.</div>
   </section>
 
@@ -917,6 +1129,8 @@
       "sauna.li6": "<b>Water massage:</b> Switch it on with the finger-touch button on the far left. Air can be added via the air screw on the rim of the tub.",
       "sauna.li8": "<b>Light:</b> Turned on with the touch button at the bottom left.",
       "sauna.li9": "<b>Stop a massage:</b> Press the same button again.",
+      "sauna.anim1": "<b>Green (0-4):</b> the sauna heats immediately. <b>Red (past 4):</b> delayed start.",
+      "sauna.anim2": "<b>Reversed tap:</b> down = water on, up = off.",
       "noed.sub": "Good to know", "noed.title": "In an emergency",
       "noed.fact1": "Emergency services", "noed.fact2": "Out-of-hours doctor", "noed.fact3": "Nearest hospital",
       "noed.fact3val": "Zealand University Hospital, Nykøbing F., Fjordvej 15 — approx. 20 min / 17 km",
@@ -953,6 +1167,16 @@
       "gaest.textph": "Write a comment about your stay…",
       "gaest.submit": "Share your experience",
       "gaest.wall": "Greetings from previous guests",
+      "koekken.anim": "<b>Toaster:</b> Turn the timer all the way over, back — and then set the time.",
+      "ude.hottub.anim": "<b>Fill</b> → <b>heat up</b> → <b>enjoy.</b>",
+      "regler.anim": "<b>Ceiling light:</b> Off/on within 3 sec. dims it — 3 levels, plus a faint night light when off.",
+      "affald.sorth": "How to sort (REFA)",
+      "frac.mad": "<b>Food waste</b><span>On its own. Use the green bags (in the tall cabinet in the kitchen) and tie with a knot. Peels, food scraps, coffee grounds, eggshells.</span>",
+      "frac.rest": "<b>Residual waste</b><span>On its own. Nappies, dirty packaging, crisp bags, pizza boxes.</span>",
+      "frac.metalglas": "<b>Metal &amp; glass</b><span>Together. Cans, foil trays, lids, bottles and jars. Emptied.</span>",
+      "frac.pappapir": "<b>Cardboard &amp; paper</b><span>Together. Newspapers, flyers, letters, boxes, corrugated card, egg trays. Clean and dry.</span>",
+      "frac.plastkart": "<b>Plastic &amp; cartons</b><span>Together. Film, bags, trays and tubs, plus milk, juice and yoghurt cartons.</span>",
+      "frac.tekstilfarlig": "<b>Textiles &amp; hazardous waste</b><span>Take to the recycling centre. Worn clothes and textiles, plus paint, batteries, spray cans, chemicals and bulbs.</span>",
       "footer.title": "Happy holidays at Beach House på Bøtøvej",
       "footer.sub": "We hope you have a wonderful stay."
     },
@@ -1032,6 +1256,8 @@
       "sauna.li6": "<b>Wassermassage:</b> Einschalten mit der Finger-Touch-Taste ganz links. Über die Luftschraube am Wannenrand kann Luft zugeführt werden.",
       "sauna.li8": "<b>Licht:</b> Wird mit der Touch-Taste unten links eingeschaltet.",
       "sauna.li9": "<b>Massage stoppen:</b> Dieselbe Taste erneut drücken.",
+      "sauna.anim1": "<b>Grün (0-4):</b> die Sauna heizt sofort. <b>Rot (über 4):</b> verzögerter Start.",
+      "sauna.anim2": "<b>Umgekehrter Hahn:</b> unten = Wasser an, oben = aus.",
       "noed.sub": "Gut zu wissen", "noed.title": "Im Notfall",
       "noed.fact1": "Notruf", "noed.fact2": "Ärztlicher Bereitschaftsdienst", "noed.fact3": "Nächstes Krankenhaus",
       "noed.fact3val": "Universitätskrankenhaus Seeland, Nykøbing F., Fjordvej 15 — ca. 20 Min. / 17 km",
@@ -1068,6 +1294,16 @@
       "gaest.textph": "Schreibt einen Kommentar zu eurem Aufenthalt…",
       "gaest.submit": "Erfahrung teilen",
       "gaest.wall": "Grüße von früheren Gästen",
+      "koekken.anim": "<b>Toaster:</b> Dreht den Timer ganz herum, zurück — und stellt dann die Zeit ein.",
+      "ude.hottub.anim": "<b>Befüllen</b> → <b>aufheizen</b> → <b>genießen.</b>",
+      "regler.anim": "<b>Deckenlampe:</b> Innerhalb von 3 Sek. aus/an dimmt sie — 3 Stufen, plus ein schwaches Nachtlicht im Aus-Zustand.",
+      "affald.sorth": "So sortiert ihr (REFA)",
+      "frac.mad": "<b>Bioabfall</b><span>Für sich allein. Verwendet die grünen Beutel (im Hochschrank in der Küche) und knotet sie zu. Schalen, Speisereste, Kaffeesatz, Eierschalen.</span>",
+      "frac.rest": "<b>Restmüll</b><span>Für sich allein. Windeln, verschmutzte Verpackungen, Chipstüten, Pizzakartons.</span>",
+      "frac.metalglas": "<b>Metall &amp; Glas</b><span>Zusammen. Dosen, Alu-Schalen, Deckel, Flaschen und Gläser. Geleert.</span>",
+      "frac.pappapir": "<b>Pappe &amp; Papier</b><span>Zusammen. Zeitungen, Prospekte, Briefe, Kartons, Wellpappe, Eierkartons. Sauber und trocken.</span>",
+      "frac.plastkart": "<b>Plastik &amp; Kartons</b><span>Zusammen. Folie, Beutel, Schalen und Dosen sowie Milch-, Saft- und Joghurtkartons.</span>",
+      "frac.tekstilfarlig": "<b>Textilien &amp; Sondermüll</b><span>Zum Wertstoffhof bringen. Getragene Kleidung und Textilien sowie Farbe, Batterien, Spraydosen, Chemikalien und Leuchtmittel.</span>",
       "footer.title": "Schöne Ferien im Beach House på Bøtøvej",
       "footer.sub": "Wir wünschen euch einen wunderbaren Aufenthalt."
     }
